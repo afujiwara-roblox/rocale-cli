@@ -2,12 +2,18 @@ name: CI
 
 on:
   pull_request:
+    branches:
+      - master
+  pull_request_target:
+    branches:
+      - master
   push:
     branches:
       - master
 
 jobs:
   test:
+    environment: CI
     name: Test - ${{ matrix.os }}
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 1
